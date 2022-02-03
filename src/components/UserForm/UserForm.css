@@ -11,6 +11,8 @@
     border: 1px solid black;
     border-radius: 4px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    left: 38%; 
+    position: absolute;
 }
 
 .button__wrapper {
@@ -22,12 +24,17 @@
 .field {
     margin-bottom: 1rem;
 }
+
 .customize__display__data {
     border: 1px solid black;
     border-radius: 4px;
     margin: 8px;
     padding: 8px;
     background: white;
+    height: fit-content;
+    position: absolute;
+    right: 26%;
+    transition: 0.4s;
 }
 .customize__submit, .customize__reset {
     color: white;
@@ -53,4 +60,9 @@
 .help {
     color: red;
     margin-top: 8px;
+}
+
+.box {
+    display: flex;
+    align-items: center;
 }

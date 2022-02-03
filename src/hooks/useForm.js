@@ -1,14 +1,17 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 
 const useForm = (callback, validate) => {
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [user, setUser] = useContext(UserContext);
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
+      setUser(values);
       callback();
     }
   }, [errors]);
@@ -20,9 +23,8 @@ const useForm = (callback, validate) => {
   };
 
   const handleReset = () => {
-    console.log(errors);
     setValues({});
-    setErrors({});
+    setUser({});
   }
 
   const handleChange = (event) => {

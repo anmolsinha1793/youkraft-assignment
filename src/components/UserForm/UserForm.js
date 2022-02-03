@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 import useForm from "../../hooks/useForm";
 import validate from '../../Validators/FormValidator';
 import './UserForm.css';
@@ -13,16 +14,22 @@ const UserForm = () => {
   } = useForm(submitData, validate);
 
   const [submitted, setSubmitted] = useState(false);
+  const [user, setUser] = useContext(UserContext);
 
   const valueMapper = () => {
-    return Object.keys(values).map((key) =>
-    <li key={key}>{key}: {values[key]}</li>
+    return Object.keys(user).map((key) =>
+    <li key={key}>{key}: {user[key]}</li>
     );
   }
 
   function submitData() {
     setSubmitted(true);
     console.log('No errors, submit callback called!');
+  }
+
+  const onResetClick = () => {
+    handleReset();
+    setSubmitted(false)
   }
 
   return (
@@ -66,7 +73,7 @@ const UserForm = () => {
                 )}
               </div>
               <div className='button__wrapper'>
-              <button type='button' className="customize__reset" onClick={handleReset, () => setSubmitted(false)}>Reset</button>
+              <button type='button' className="customize__reset" onClick={onResetClick}>Reset</button>
               <button type="submit" className="customize__submit">Submit</button>
               </div>
             </form>
