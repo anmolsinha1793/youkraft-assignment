@@ -9,6 +9,9 @@ const useForm = (callback, validate) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [user, setUser] = useContext(UserContext);
 
+  /**
+   * lifecycle hook for react, executes when there is change in error
+   */
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       setUser(values);
@@ -16,17 +19,30 @@ const useForm = (callback, validate) => {
     }
   }, [errors]);
 
+  /**
+   * function to handle submit action by user
+   * @param event event from the click
+   * @return  {void}
+   */
   const handleSubmit = (event) => {
     if (event) event.preventDefault();
     setErrors(validate(values));
     setIsSubmitting(true);
   };
 
+  /**
+   * function to handle reset action by the user and clear values from form
+   * @return  {void}
+   */
   const handleReset = () => {
     setValues({});
     setUser({});
   }
-
+  /**
+   * function to update state based on user input change
+   * @param event event from the click
+   * @return  {void}
+   */
   const handleChange = (event) => {
     event.persist();
     let {name, value} = event.target;

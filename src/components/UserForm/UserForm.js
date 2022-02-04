@@ -17,17 +17,29 @@ const UserForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [user, setUser] = useContext(UserContext);
 
+  /**
+   * function to return user input data
+   * @return  Input values in list format
+   */
   const valueMapper = () => {
     return Object.keys(user).map((key) =>
     <li key={key}>{key}: {user[key]}</li>
     );
   }
 
+  /**
+   * function to execute when all data is submitted and no error is found
+   * @return  {void}
+   */
   function submitData() {
     setSubmitted(true);
     console.log('No errors, submit callback called!');
   }
 
+  /**
+   * function to execute when user clicks on reset button
+   * @return  {void}
+   */
   const onResetClick = () => {
     handleReset();
     setSubmitted(false)
