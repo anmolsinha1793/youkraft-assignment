@@ -1,5 +1,6 @@
 .form__wrapper {
     display: flex;
+    background: aliceblue;
     justify-content: center;
     height: 100vh;
     align-items: center;
@@ -7,6 +8,7 @@
 }
 
 .customize__form {
+    background: white;
     padding: 2rem;
     border: 1px solid black;
     border-radius: 4px;
@@ -57,7 +59,7 @@
     height: 24px;
 }
 
-.help {
+.isError {
     color: red;
     margin-top: 8px;
 }

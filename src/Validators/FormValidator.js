@@ -1,10 +1,12 @@
 export default function validate(values) {
     let errors = {};
     if (!values.name) {
-      errors.name = 'name is required';
+      errors.name = 'Name is required';
     }
     if (!values.age) {
-      errors.age = 'age is required';
+      errors.age = 'Age is required';
+    } else if (values.age < 1 || values.age > 100) {
+      errors.age = 'Age should be within 1 - 100';
     }
     if (!values.email) {
       errors.email = 'Email address is required';
